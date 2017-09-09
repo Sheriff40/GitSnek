@@ -14,7 +14,7 @@ private:
 		void Follow(const Segment& next_segment);
 		void Move(const Location& delta_loc);
 		void Draw(Board& brd) const;
-		Location& Getlocation();
+		const Location& Getlocation() const;
 	};
 private:
 	static constexpr Color HeadColor = Colors::Yellow;
@@ -27,8 +27,6 @@ public:
 	void Grow();
 	void MoveBy(const Location& delta_loc);
 	void Draw(Board& brd) const;
-	Location& GetNextLocation(const Location& delta_loc);
-	bool IsInTile(const Location& target);
-	
-
+	Location& GetNextLocation(const Location& delta_loc) const;
+	bool IsInTile(const Location& target) const;
 };

@@ -8,11 +8,11 @@
 class Goal {
 private:
 	Location Loc;
-	Color c = Colors::Red;
+	static constexpr Color c = Colors::Red;
 public:
-	Goal(std::mt19937& rng, Snake& snake, Board& brd);
-	void respawn(std::mt19937& rng, Snake& snake, Board& brd);
-	void DrawGoal(Board& brd)
+	Goal(std::mt19937& rng, const Snake& snek, const Board& brd);
+	void respawn(std::mt19937& rng, const Snake& snek, const Board& brd);
+	void DrawGoal(Board& brd) const
 	{
 		brd.DrawCell(Loc, c);
 	};

@@ -32,14 +32,14 @@ void Snake::Draw(Board& brd) const
 	}
 }
 
-Location & Snake::GetNextLocation(const Location & delta_loc)
+Location & Snake::GetNextLocation(const Location& delta_loc) const
 {
 	Location l(segment[0].Getlocation());
 	l.Add(delta_loc);
 	return l;
 }
 
-bool Snake::IsInTile(const Location& target)
+bool Snake::IsInTile(const Location& target) const
 {
 	for (int i = 0; i < nsegment; i++)
 	{
@@ -78,7 +78,7 @@ void Snake::Segment::Draw(Board & brd) const
 	brd.DrawCell(Loc, c);
 }
 
-Location & Snake::Segment::Getlocation()
+const Location& Snake::Segment::Getlocation() const
 {
 	return Loc;
 }

@@ -1,5 +1,4 @@
 #pragma once
-
 class Location {
 public:
 	void Add(const Location& val)
@@ -7,7 +6,7 @@ public:
 		x += val.x;
 		y += val.y;
 	}
-	bool operator==(const Location& rhs)
+	bool operator==(const Location& rhs) const
 	{
 		return x == rhs.x && y == rhs.y;
 	}
