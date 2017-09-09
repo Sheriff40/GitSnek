@@ -26,6 +26,7 @@
 #include "Board.h"
 #include "Location.h"
 #include "Snake.h"
+#include "Goal.h"
 #include <random>
 
 class Game
@@ -48,6 +49,10 @@ private:
 	std::mt19937 rng;
 	Snake Snek;
 	Location Delta_loc = {1,0};
+	int SnakeMoveRate = 1;
+	int SnakeMaxRate = 20;
+	Goal goal;
+	bool GameOver = false;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

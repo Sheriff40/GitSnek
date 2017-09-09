@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "SpriteCodex.h"
 
 Game::Game( MainWindow& wnd )
 	:
@@ -27,7 +28,8 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	brd(gfx),
 	rng(std::random_device()()),
-	Snek({2,2})
+	Snek({2,2}),
+	goal(rng,Snek,brd)
 {
 }
 
@@ -41,26 +43,47 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	if (wnd.kbd.KeyIsPressed(VK_UP))
+	if (!GameOver)
 	{
-		Delta_loc = { 0,-1 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
-	{
-		Delta_loc = { 0,1 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-	{
-		Delta_loc = { 1,0 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
-	{
-		Delta_loc = { -1,0 };
-	}
-	Snek.MoveBy(Delta_loc);
-	if (wnd.kbd.KeyIsPressed(VK_CONTROL))
-	{
-		Snek.Grow();
+		if (wnd.kbd.KeyIsPressed(VK_UP))
+		{
+			Delta_loc = { 0,-1 };
+		}
+		if (wnd.kbd.KeyIsPressed(VK_DOWN))
+		{
+			Delta_loc = { 0,1 };
+		}
+		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+		{
+			Delta_loc = { 1,0 };
+		}
+		if (wnd.kbd.KeyIsPressed(VK_LEFT))
+		{
+			Delta_loc = { -1,0 };
+		}
+		SnakeMoveRate++;
+		if (SnakeMoveRate < SnakeMaxRate)
+		{
+		}
+		else
+		{
+
+			if (!brd.IsInBoard(Snek.GetNextLocation(Delta_loc)))
+			{
+				Snek.MoveBy(Delta_loc);
+				if (goal.IsEating(Snek.GetNextLocation(Delta_loc)))
+				{
+					//Snek.Grow();
+					goal.respawn(rng, Snek, brd);
+				}
+				SnakeMoveRate = 1;
+
+			}
+			else
+			{
+				GameOver = true;
+			}
+		}
 	}
 }
 
@@ -77,5 +100,10 @@ void Game::ComposeFrame()
 		}
 	} */
 	Snek.Draw(brd);
-
+	goal.DrawGoal(brd);
+	brd.DrawBorder();
+	if (GameOver)
+	{
+		SpriteCodex::DrawGameOver(200, 250, gfx);
+	}
 }

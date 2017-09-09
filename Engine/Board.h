@@ -19,7 +19,22 @@ public:
 		assert(Loc.y < height);
 		abc.DrawRectDim(Loc.x *dimension, Loc.y *dimension, dimension, dimension, c);
 	}
+	void DrawBorder()
+	{
+
+		for (int i = 1; i <= width; i++)
+		{
+			for (int j = 1; j <= height; j++)
+			{
+				if (i == 1 || i == width || j == 1 || j == height)
+				{
+					abc.DrawRectDim(i *dimension, j *dimension, dimension, dimension, Colors::LightGray);
+				}
+			}
+		}
+	}
+
 	int GetHeight() const;
 	int GetWidth() const;
-
+	bool IsInBoard(Location& loc_in) const;
 };
