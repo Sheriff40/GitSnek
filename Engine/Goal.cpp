@@ -20,7 +20,7 @@ void Goal::respawn(std::mt19937 & rng, const Snake& snek, const Board& brd)
 	Loc = loc;
 }
 
-bool Goal::IsEating(const Location & in_loc)
+bool Goal::IsEating(const Location & in_loc) const
 {
 	return Loc == in_loc;
 }

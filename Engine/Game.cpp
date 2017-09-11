@@ -73,7 +73,7 @@ void Game::UpdateModel()
 				Snek.MoveBy(Delta_loc);
 				if (goal.IsEating(Snek.GetNextLocation(Delta_loc)))
 				{
-					//Snek.Grow();
+					Snek.Grow();
 					goal.respawn(rng, Snek, brd);
 				}
 				SnakeMoveRate = 1;

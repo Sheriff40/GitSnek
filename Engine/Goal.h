@@ -16,5 +16,5 @@ public:
 	{
 		brd.DrawCell(Loc, c);
 	};
-	bool IsEating(const Location& in_loc);
+	bool IsEating(const Location& in_loc) const;
 };
