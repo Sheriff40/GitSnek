@@ -29,8 +29,7 @@ Game::Game( MainWindow& wnd )
 	brd(gfx),
 	rng(std::random_device()()),
 	Snek({2,2}),
-	goal(rng,Snek,brd),
-	Obs(rng,Snek,brd,goal)
+	goal(rng,Snek,brd)
 {
 }
 
@@ -103,7 +102,6 @@ void Game::ComposeFrame()
 	Snek.Draw(brd);
 	goal.DrawGoal(brd);
 	brd.DrawBorder();
-	//Obs.Draw(brd);
 	if (GameOver)
 	{
 		SpriteCodex::DrawGameOver(200, 250, gfx);
