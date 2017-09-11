@@ -24,3 +24,11 @@ bool Goal::IsEating(const Location & in_loc)
 {
 	return Loc == in_loc;
 }
+
+bool Goal::IsInTile4(const Location & temp_loc) const
+{
+	if (Loc == temp_loc)
+	{
+		return true;
+	}
+}

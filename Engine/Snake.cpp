@@ -82,3 +82,14 @@ const Location& Snake::Segment::Getlocation() const
 {
 	return Loc;
 }
+
+bool Snake::IsInTile2(const Location& temp_loc) const
+{
+	for (int i = 0; i < nsegment; i++)
+	{
+		if (segment[i].Getlocation() == temp_loc)
+		{
+			return true;
+		}
+	}
+}

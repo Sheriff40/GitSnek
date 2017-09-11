@@ -17,4 +17,5 @@ public:
 		brd.DrawCell(Loc, c);
 	};
 	bool IsEating(const Location& in_loc);
+	bool IsInTile4(const Location & temp_loc) const;
 };

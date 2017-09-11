@@ -29,4 +29,5 @@ public:
 	void Draw(Board& brd) const;
 	Location& GetNextLocation(const Location& delta_loc) const;
 	bool IsInTile(const Location& target) const;
+	bool IsInTile2(const Location& temp_loc) const;
 };

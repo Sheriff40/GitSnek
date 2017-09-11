@@ -27,6 +27,7 @@
 #include "Location.h"
 #include "Snake.h"
 #include "Goal.h"
+#include "Obstacle.h"
 #include <random>
 
 class Game
@@ -52,6 +53,7 @@ private:
 	int SnakeMoveRate = 1;
 	int SnakeMaxRate = 20;
 	Goal goal;
+	Obstacle Obs;
 	bool GameOver = false;
 	/********************************/
 	/*  User Variables              */
